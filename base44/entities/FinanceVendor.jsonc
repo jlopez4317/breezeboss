@@ -1,0 +1,18 @@
+{
+  "name": "FinanceVendor",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Financing vendor name e.g. Synchrony Finance"
+    },
+    "feePercent": {
+      "type": "number",
+      "default": 0,
+      "description": "Financing fee percentage"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

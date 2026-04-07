@@ -1,0 +1,145 @@
+{
+  "name": "Bid",
+  "type": "object",
+  "properties": {
+    "jobId": {
+      "type": "string",
+      "description": "FK to Job"
+    },
+    "customerId": {
+      "type": "string",
+      "description": "FK to Customer"
+    },
+    "documentType": {
+      "type": "string",
+      "enum": [
+        "Bid",
+        "Estimate"
+      ],
+      "default": "Bid",
+      "description": "Whether this is a Bid or an Estimate"
+    },
+    "bidNumber": {
+      "type": "string"
+    },
+    "bidDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "validUntil": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Draft",
+        "Sent",
+        "Viewed",
+        "Accepted",
+        "Declined",
+        "Expired"
+      ],
+      "default": "Draft"
+    },
+    "materialSubtotal": {
+      "type": "number",
+      "default": 0
+    },
+    "laborCost": {
+      "type": "number",
+      "default": 0
+    },
+    "taxRate": {
+      "type": "number",
+      "default": 0
+    },
+    "taxAmount": {
+      "type": "number",
+      "default": 0
+    },
+    "totalAmount": {
+      "type": "number",
+      "default": 0
+    },
+    "markupPercent": {
+      "type": "number",
+      "default": 0
+    },
+    "financingEnabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "financingProvider": {
+      "type": "string"
+    },
+    "financingFeePercent": {
+      "type": "number",
+      "default": 0
+    },
+    "financingFeeAmount": {
+      "type": "number",
+      "default": 0
+    },
+    "notes": {
+      "type": "string"
+    },
+    "termsAndConditions": {
+      "type": "string"
+    },
+    "sentAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "respondedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "projectDescription": {
+      "type": "string"
+    },
+    "workIncluded": {
+      "type": "string"
+    },
+    "workExcluded": {
+      "type": "string"
+    },
+    "permitNotes": {
+      "type": "string"
+    },
+    "equipmentWarranty": {
+      "type": "string"
+    },
+    "laborWarranty": {
+      "type": "string"
+    },
+    "depositPercent": {
+      "type": "number",
+      "default": 0
+    },
+    "progressPercent": {
+      "type": "number",
+      "default": 0
+    },
+    "balancePercent": {
+      "type": "number",
+      "default": 0
+    },
+    "progressMilestone": {
+      "type": "string"
+    },
+    "changeOrderHourlyRate": {
+      "type": "number"
+    },
+    "changeOrderAfterHoursRate": {
+      "type": "number"
+    },
+    "changeOrderMinServiceCall": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "jobId",
+    "customerId"
+  ]
+}

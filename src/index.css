@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-inter: 'Inter', sans-serif;
+    --background: 214 25% 97%;
+    --foreground: 240 50% 5%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 50% 5%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 50% 5%;
+    --primary: 211 52% 25%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 197 66% 49%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 214 20% 92%;
+    --muted-foreground: 215 16% 35%;
+    --accent: 197 66% 49%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214 20% 72%;
+    --input: 214 20% 72%;
+    --ring: 211 52% 25%;
+    --chart-1: 211 52% 25%;
+    --chart-2: 197 66% 49%;
+    --chart-3: 160 60% 45%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 0 84% 60%;
+    --radius: 0.625rem;
+    --sidebar-background: 211 52% 20%;
+    --sidebar-foreground: 214 25% 92%;
+    --sidebar-primary: 197 66% 49%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 211 52% 28%;
+    --sidebar-accent-foreground: 214 25% 95%;
+    --sidebar-border: 211 40% 30%;
+    --sidebar-ring: 197 66% 49%;
+  }
+
+  .dark {
+    --background: 220 20% 8%;
+    --foreground: 0 0% 95%;
+    --card: 220 20% 11%;
+    --card-foreground: 0 0% 95%;
+    --popover: 220 20% 11%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 197 66% 49%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 211 52% 25%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 220 15% 16%;
+    --muted-foreground: 214 15% 55%;
+    --accent: 197 66% 49%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 15% 18%;
+    --input: 220 15% 18%;
+    --ring: 197 66% 49%;
+    --chart-1: 197 66% 49%;
+    --chart-2: 211 52% 45%;
+    --chart-3: 160 60% 45%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 0 84% 60%;
+    --sidebar-background: 220 20% 6%;
+    --sidebar-foreground: 214 25% 85%;
+    --sidebar-primary: 197 66% 49%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 20% 12%;
+    --sidebar-accent-foreground: 214 25% 90%;
+    --sidebar-border: 220 15% 14%;
+    --sidebar-ring: 197 66% 49%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-inter;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* Pulse animation for overdue items */
+@keyframes pulse-red {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+.animate-pulse-red {
+  animation: pulse-red 2s ease-in-out infinite;
+}
+
+/* Priority Badge — Read-Only Style */
+.priority-badge,
+.priority-badge:hover,
+.priority-badge:focus,
+.priority-badge:active,
+.priority-badge *,
+[data-priority],
+[data-priority]:hover {
+  pointer-events: none !important;
+  cursor: default !important;
+}
+
+/* Bid Package Print Styles */
+@media print {
+  body > * { display: none !important; }
+  #bid-print-root { display: block !important; }
+  #bid-print-root .bid-print-page {
+    page-break-after: always;
+    padding: 0;
+    margin: 0;
+  }
+  #bid-print-root .bid-print-page:last-child {
+    page-break-after: avoid;
+  }
+  @page {
+    margin: 0.5in;
+  }
+}
+
+#bid-print-root {
+  display: none;
+}
