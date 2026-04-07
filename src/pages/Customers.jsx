@@ -22,9 +22,12 @@ export default function Customers() {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const queryClient = useQueryClient();
-  const [search, setSearch] = useState('');
-  const [statusFilter, setStatusFilter] = useState('');
-  const [sourceFilter, setSourceFilter] = useState('');
+  const search = searchParams.get('q') || '';
+  const statusFilter = searchParams.get('status') || '';
+  const sourceFilter = searchParams.get('source') || '';
+  const setSearch = (val) => setSearchParams(prev => { const n = new URLSearchParams(prev); if (val) n.set('q', val); else n.delete('q'); return n; }, { replace: true });
+  const setStatusFilter = (val) => setSearchParams(prev => { const n = new URLSearchParams(prev); if (val) n.set('status', val); else n.delete('status'); return n; }, { replace: true });
+  const setSourceFilter = (val) => setSearchParams(prev => { const n = new URLSearchParams(prev); if (val) n.set('source', val); else n.delete('source'); return n; }, { replace: true });
   const [formOpen, setFormOpen] = useState(searchParams.get('new') === 'true');
   const [editingCustomer, setEditingCustomer] = useState(null);
 
@@ -193,7 +196,6 @@ export default function Customers() {
   const openNew = () => {
     setEditingCustomer(null);
     setFormOpen(true);
-    setSearchParams({});
   };
 
   return (
@@ -210,7 +212,7 @@ export default function Customers() {
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input placeholder="Search name, phone, email..." value={search} onChange={e => setSearch(e.target.value)} className="pl-9" />
         </div>
-        <Select value={statusFilter} onValueChange={(val) => { const v = val === 'reset-status' ? '' : val; setStatusFilter(v); }}>
+        <Select value={statusFilter} onValueChange={(val) => { setStatusFilter(val === 'reset-status' ? '' : val); }}>
           <SelectTrigger className="w-36">
             {statusFilter === '' ? <span className="text-muted-foreground">Status</span> : <SelectValue />}
           </SelectTrigger>
@@ -222,7 +224,7 @@ export default function Customers() {
             <SelectItem value="Lead">Lead</SelectItem>
           </SelectContent>
         </Select>
-        <Select value={sourceFilter} onValueChange={(val) => { const v = val === 'reset-source' ? '' : val; setSourceFilter(v); }}>
+        <Select value={sourceFilter} onValueChange={(val) => { setSourceFilter(val === 'reset-source' ? '' : val); }}>
           <SelectTrigger className="w-36">
             {sourceFilter === '' ? <span className="text-muted-foreground">Sources</span> : <SelectValue />}
           </SelectTrigger>

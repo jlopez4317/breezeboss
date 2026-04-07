@@ -22,8 +22,10 @@ export default function Invoices() {
   const [searchParams, setSearchParams] = useSearchParams();
   const queryClient = useQueryClient();
   const navigate = useNavigate();
-  const [search, setSearch] = useState('');
-  const [statusFilter, setStatusFilter] = useState('');
+  const search = searchParams.get('q') || '';
+  const statusFilter = searchParams.get('status') || '';
+  const setSearch = (val) => setSearchParams(prev => { const n = new URLSearchParams(prev); if (val) n.set('q', val); else n.delete('q'); return n; }, { replace: true });
+  const setStatusFilter = (val) => setSearchParams(prev => { const n = new URLSearchParams(prev); if (val) n.set('status', val); else n.delete('status'); return n; }, { replace: true });
   const [formOpen, setFormOpen] = useState(searchParams.get('new') === 'true');
   const [viewerInvoice, setViewerInvoice] = useState(null);
   const [viewerMaterials, setViewerMaterials] = useState([]);
@@ -129,7 +131,7 @@ export default function Invoices() {
         </div>
         <Select
           value={statusFilter}
-          onValueChange={(val) => { const v = val === 'reset' ? '' : val; setStatusFilter(v); }}
+          onValueChange={(val) => { setStatusFilter(val === 'reset' ? '' : val); }}
         >
           <SelectTrigger className="w-36">
             {statusFilter === ''

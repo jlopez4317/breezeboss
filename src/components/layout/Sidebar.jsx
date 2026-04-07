@@ -22,13 +22,13 @@ const navItems = [
   { label: 'Settings', icon: Settings, path: '/settings' },
 ];
 
-// Store last visited URL per section in sessionStorage
+// Store last visited URL per section in localStorage (persists across browser sessions)
 const getLastUrl = (basePath) => {
-  return sessionStorage.getItem(`last_url_${basePath}`) || basePath;
+  return localStorage.getItem(`last_url_${basePath}`) || basePath;
 };
 
 const saveLastUrl = (basePath, url) => {
-  sessionStorage.setItem(`last_url_${basePath}`, url);
+  localStorage.setItem(`last_url_${basePath}`, url);
 };
 
 export default function Sidebar({ collapsed, setCollapsed, onNavClick }) {

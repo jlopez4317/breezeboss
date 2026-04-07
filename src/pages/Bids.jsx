@@ -34,9 +34,12 @@ export default function Bids() {
   const [searchParams, setSearchParams] = useSearchParams();
   const queryClient = useQueryClient();
   const { defaultTaxRate, defaultMarkup } = useSettings();
-  const [search, setSearch] = useState('');
-  const [statusFilter, setStatusFilter] = useState('');
-  const [typeDocFilter, setTypeDocFilter] = useState('');
+  const search = searchParams.get('q') || '';
+  const statusFilter = searchParams.get('status') || '';
+  const typeDocFilter = searchParams.get('doctype') || '';
+  const setSearch = (val) => setSearchParams(prev => { const n = new URLSearchParams(prev); if (val) n.set('q', val); else n.delete('q'); return n; }, { replace: true });
+  const setStatusFilter = (val) => setSearchParams(prev => { const n = new URLSearchParams(prev); if (val) n.set('status', val); else n.delete('status'); return n; }, { replace: true });
+  const setTypeDocFilter = (val) => setSearchParams(prev => { const n = new URLSearchParams(prev); if (val) n.set('doctype', val); else n.delete('doctype'); return n; }, { replace: true });
   const [formOpen, setFormOpen] = useState(searchParams.get('new') === 'true');
   const [laborRatesOpen, setLaborRatesOpen] = useState(false);
   const [previewBid, setPreviewBid] = useState(null);
@@ -337,7 +340,7 @@ export default function Bids() {
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input placeholder="Search bids..." value={search} onChange={e => setSearch(e.target.value)} className="pl-9" />
         </div>
-        <Select value={statusFilter} onValueChange={(val) => { const v = val === 'reset-status' ? '' : val; setStatusFilter(v); }}>
+        <Select value={statusFilter} onValueChange={(val) => { setStatusFilter(val === 'reset-status' ? '' : val); }}>
           <SelectTrigger className="w-36">
             {statusFilter === '' ? <span className="text-muted-foreground">Status</span> : <SelectValue />}
           </SelectTrigger>
@@ -347,7 +350,7 @@ export default function Bids() {
             {BID_STATUSES.map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}
           </SelectContent>
         </Select>
-        <Select value={typeDocFilter} onValueChange={(val) => { const v = val === 'reset' ? '' : val; setTypeDocFilter(v); }}>
+        <Select value={typeDocFilter} onValueChange={(val) => { setTypeDocFilter(val === 'reset' ? '' : val); }}>
           <SelectTrigger className="w-32">
             {typeDocFilter === '' ? <span className="text-muted-foreground">Type</span> : <SelectValue />}
           </SelectTrigger>

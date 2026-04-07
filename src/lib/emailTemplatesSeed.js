@@ -237,22 +237,21 @@ const EMAIL_TEMPLATES = [
     {
     name: 'Welcome — New Lead',
     category: 'Welcome',
-    subject: 'Thank you for reaching out to [COMPANY_NAME]!',
+    subject: 'Thank you for contacting [COMPANY_NAME]!',
     body: `<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #1a1a1a;">
   <div style="background-color: #1E3A5F; padding: 24px; text-align: center; border-radius: 6px 6px 0 0;">
     <h1 style="color: #ffffff; margin: 0; font-size: 22px;">[COMPANY_NAME]</h1>
     <p style="color: #aac8e8; margin: 4px 0 0 0; font-size: 13px;">[COMPANY_PHONE] · [COMPANY_EMAIL]</p>
   </div>
   <div style="background: #ffffff; border: 1px solid #e0e0e0; border-top: none; padding: 32px; border-radius: 0 0 6px 6px;">
-    <p style="font-size: 16px;">Dear [CUSTOMER_FIRST_NAME],</p>
-    <p>&nbsp;</p>
-    <p>Thank you for reaching out to [COMPANY_NAME]! We are truly excited about the opportunity to help you with your HVAC needs and want you to know you are in great hands.</p>
-    <p>One of our team members will be in touch with you shortly to learn more about your project, answer any questions, and get you taken care of as quickly as possible.</p>
-    <p>&nbsp;</p>
-    <p>Best regards,</p>
-    <p><strong>The [COMPANY_NAME] Team</strong></p>
-    <p>&nbsp;</p>
-    <p style="color: #555555; font-size: 14px; font-style: italic;">Your comfort is our priority — we look forward to serving you!</p>
+    <p style="font-size: 16px;">Hi [CUSTOMER_FIRST_NAME],</p>
+    <p>Thank you for reaching out to <strong>Juanderful AC Services</strong> — we appreciate you giving us the opportunity to earn your business.</p>
+    <p>We are a licensed and insured HVAC contractor proudly serving the greater Orlando area. Whether you need a repair, a new system installation, or a routine tune-up, our team is here to keep your home or business comfortable year-round.</p>
+    <p>One of our team members will be in touch with you shortly to discuss your needs, answer any questions, and get you scheduled at a time that works best for you.</p>
+    <p>In the meantime, if you have an urgent concern or would like to speak with someone right away, please don't hesitate to call or text us directly at <strong>[COMPANY_PHONE]</strong>.</p>
+    <p style="margin-top: 28px;">We look forward to serving you,</p>
+    <p><strong>The Juanderful AC Services Team</strong><br/>
+    <span style="font-size: 13px; color: #555555;">Orlando, FL &nbsp;|&nbsp; License CAC1819145</span></p>
   </div>
 </div>`,
     isDefault: false,
